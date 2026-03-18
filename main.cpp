@@ -21,6 +21,32 @@ enum RoomType {
     PRIVATE_ROOM,
     SEMI_PRIVATE
 };
+// ========== HELPERS ========== //
+string roomTypeName(RoomType type)
+{
+    switch (type)
+    {
+        case GENERAL_WARD:  return "General Ward";
+        case ICU:           return "ICU";
+        case PRIVATE_ROOM:  return "Private Room";
+        case SEMI_PRIVATE:  return "Semi-Private Room";
+        default:            return "Unkown";
+    }
+}
+
+string departmentName(Department dept)
+{
+    switch (dept)
+    {
+        case CARDIOLOGY:    return "Cardiology";
+        case NEUROLOGY:     return "Neurology";
+        case ORTHOPEDICS:   return "Orthopedics";
+        case PEDIATRICS:    return "Pediatrics";
+        case EMERGENCY:     return "Emergecny";
+        case GENERAL:       return "General Practice";
+        default:            return "Unknown";
+    }
+}
 
 // ========== PATIENT CLASS ========== //
 class Patient {
