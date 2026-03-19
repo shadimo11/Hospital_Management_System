@@ -131,6 +131,49 @@ public:
     bool getAdmissionStatus(){
          return isAdmitted;
     };
+    Patient(int pid, string n, int a, string c);
+
+    void admitPatient(RoomType type);
+
+    void dischargePatient();
+    void addMedicalRecord(string record){
+        medicalHistory.push(record);
+        cout << "Medical record added for " << name << " : " << record << endl;
+    }
+      
+    void requestTest(string testName){
+        testQueue.push(testName);
+        cout << "Test requested for " << name << ": " << testName << endl;
+    }
+    string performTest(){
+        if(!testQueue.empty()){
+            string test = testQueue.front();
+            testQueue.pop();
+            cout << "Performing test for " << name << ": " << test << endl;
+            return test;
+        }
+        cout << "No pending tests for " << name << endl;
+        return "";
+    }
+    void displayHistory(){
+        if (medicalHistory.empty()){
+            cout << " No medical history.";
+        }
+        else{
+            stack<string> temp = medicalHistory;
+            cout << "Medical History for " << name << ":" << endl;
+            while (!temp.empty()) {
+                cout << " - " << temp.top() << endl;
+                temp.pop();
+            }
+        }
+    }
+    
+    int getId();
+
+    string getName();
+
+    bool getAdmissionStatus();
 };
 
 // ========== DOCTOR CLASS ========== //
