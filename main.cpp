@@ -62,50 +62,33 @@ private:
 
 public:
     Patient(int pid, string n, int a, string c){
-    id=pid;
-    name=n;
-    age=a;
-    contact=c;
-    isAdmitted=false;
+        id=pid;
+        name=n;
+        age=a;
+        contact=c;
+        isAdmitted=false;
 
     };
 
     void admitPatient(RoomType type){
-    if(isAdmitted==true){
-        cout<<"Patient "<<name<<" is already admitted.";
-    }else{
-    isAdmitted=true;
-    roomType=type;
-    cout<<"Patient "<<name<<" admitted to"<<roomTypeName(type)<<".";
-    }
+        if(isAdmitted==true){
+            cout<<"Patient "<<name<<" is already admitted.";
+        }else{
+        isAdmitted=true;
+        roomType=type;
+        cout<<"Patient "<<name<<" admitted to"<<roomTypeName(type)<<".";
+        }
 
     };
     void dischargePatient(){
-    if(isAdmitted==false){
-        cout<<"Patient "<<name<<" is not currently admitted.";
-    }else{
-        isAdmitted=false;
-    cout<<"Patient "<<name<<" has been discharged.";
-    }
+        if(isAdmitted==false){
+            cout<<"Patient "<<name<<" is not currently admitted.";
+        }else{
+            isAdmitted=false;
+        cout<<"Patient "<<name<<" has been discharged.";
+        }
 
     };
-    void addMedicalRecord(string record){
-
-
-    };
-    void requestTest(string testName){
-
-
-    };
-    string performTest(){
-
-
-    };
-    void displayHistory(){
-
-
-    };
-
 
 
     int getId(){
@@ -131,11 +114,7 @@ public:
     bool getAdmissionStatus(){
          return isAdmitted;
     };
-    Patient(int pid, string n, int a, string c);
 
-    void admitPatient(RoomType type);
-
-    void dischargePatient();
     void addMedicalRecord(string record){
         medicalHistory.push(record);
         cout << "Medical record added for " << name << " : " << record << endl;
@@ -168,12 +147,6 @@ public:
             }
         }
     }
-    
-    int getId();
-
-    string getName();
-
-    bool getAdmissionStatus();
 };
 
 // ========== DOCTOR CLASS ========== //
