@@ -158,14 +158,32 @@ private:
     queue<int> appointmentQueue;
 
 public:
-    Doctor(int did, string n, Department d);
+    Doctor(int did, string n, Department d)
+    {
+        id = did;
+        name = n;
+        department = d;
+    }
 
-    void addAppointment(int patientId);
+    void addAppointment(int patientId)
+    {
+        appointmentQueue.push(patientId);
+        cout << "Appointmet added for patient: " << name << ", ID: " << patientId << endl;
+    }
     int seePatient();
 
-    int getId();
-    string getName();
-    string getDepartment();
+    int getId()
+    {
+        return id;
+    }
+    string getName()
+    {
+        return name;
+    }
+    string getDepartment()
+    {
+        return departmentName(department);
+    }
 };
 
 // ========== HOSPITAL CLASS ========== //
