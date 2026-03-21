@@ -196,6 +196,10 @@ public:
     {
         return departmentName(department);
     }
+    int getPendingCount()
+    {
+        return (int)appointmentQueue.size();
+    }
 };
 
 // ========== HOSPITAL CLASS ========== //
@@ -288,7 +292,23 @@ public:
     }
     void displayPatientInfo(int patientId);
 
-    void displayDoctorInfo(int doctorId);
+    void displayDoctorInfo(int doctorId)
+    {
+        for (auto& doctor : doctors)
+        {
+            if (doctor.getId() == doctorId)
+            {
+                cout << ">>> Doctor Information <<<" << endl;
+                cout << "ID: "                  << doctor.getId()           << endl;
+                cout << "Name: "                << doctor.getName()         << endl;
+                cout << "Department: "          << doctor.getDepartment()   << endl;
+                cout << "Pending Appointments: "<< doctor.getPendingCount() << endl;
+                cout << "=========================" << endl;
+                return;
+            }
+        }
+        cout << "Doctor not found." << endl;
+    }
 };
 
 // ========== MAIN PROGRAM ========== //
