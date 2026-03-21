@@ -119,7 +119,7 @@ public:
         medicalHistory.push(record);
         cout << "Medical record added for " << name << " : " << record << endl;
     }
-      
+
     void requestTest(string testName){
         testQueue.push(testName);
         cout << "Test requested for " << name << ": " << testName << endl;
@@ -170,7 +170,19 @@ public:
         appointmentQueue.push(patientId);
         cout << "Appointmet added for patient: " << name << ", ID: " << patientId << endl;
     }
-    int seePatient();
+    int seePatient(){
+       if(appointmentQueue.empty()){
+        cout<<"No appointments for Dr."<<name<<".";
+        return -1;
+       }else{
+       cout<<"Dr. "<<name<<" is seeing patient "<<appointmentQueue.front();
+       int i=appointmentQueue.front();
+       appointmentQueue.pop();
+       return i;
+       }
+
+
+    };
 
     int getId()
     {
@@ -206,7 +218,7 @@ public:
     {
         Patient p(patientCounter, name, age, contact);
         patients.push_back(p);
-        
+
         cout << "Patient registered: " << name << ", ID: " << patientCounter << endl;
         return patientCounter++;
     }
@@ -218,18 +230,32 @@ public:
         cout << "Doctor added: " << name << ", ID: " << doctorCounter << " - " << departmentName(dept) << endl;
         return doctorCounter++;
     }
-    void admitPatient(int patientId, RoomType type);
+    void admitPatient(int patientId, RoomType type){
+    bool flag=false;
+       for (auto& patient : patients){
+        if(patient.getId()==patientId){
+            patient.admitPatient(type);
+            flag=true;
+            break;
+        }
+       }
+       if(flag==false){
+        cout<<"Patient not found.";
+       }
+
+
+    };
 
     void addEmergency(int patientId){
 
         emergencyQueue.push(patientId);
-        
+
         cout << "Emergency added for patient " << patientId << "." << endl;
     }
     int handleEmergency();
 
     void bookAppointment(int doctorId, int patientId){
-        
+
         bool flagPatient=false;
         Doctor* foundDoctor = nullptr;
 
@@ -257,7 +283,7 @@ public:
         else{
             foundDoctor->addAppointment(patientId);
         }
-        
+
 
     }
     void displayPatientInfo(int patientId);
