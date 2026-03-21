@@ -219,10 +219,49 @@ public:
         return doctorCounter++;
     }
     void admitPatient(int patientId, RoomType type);
-    void addEmergency(int patientId);
+
+    void addEmergency(int patientId){
+
+        emergencyQueue.push(patientId);
+        
+        cout << "Emergency added for patient " << patientId << "." << endl;
+    }
     int handleEmergency();
-    void bookAppointment(int doctorId, int patientId);
+
+    void bookAppointment(int doctorId, int patientId){
+        
+        bool flagPatient=false;
+        Doctor* foundDoctor = nullptr;
+
+        for (auto& i: doctors) {
+      	    if (i.getId()==doctorId){
+                foundDoctor = &i;
+            }
+        }
+
+        for (auto j: patients) {
+      	    if (j.getId()==patientId){
+                flagPatient=true;
+            }
+        }
+
+        if (foundDoctor==nullptr){
+            cout << "Doctor not found." << endl;
+        }
+
+        else if (!flagPatient)
+        {
+            cout << "Patient not found." << endl;
+        }
+
+        else{
+            foundDoctor->addAppointment(patientId);
+        }
+        
+
+    }
     void displayPatientInfo(int patientId);
+
     void displayDoctorInfo(int doctorId);
 };
 
