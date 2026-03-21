@@ -230,13 +230,11 @@ public:
 
     void bookAppointment(int doctorId, int patientId){
         
-        bool flagDoctor=false;
         bool flagPatient=false;
         Doctor* foundDoctor = nullptr;
 
         for (auto& i: doctors) {
       	    if (i.getId()==doctorId){
-                flagDoctor=true;
                 foundDoctor = &i;
             }
         }
@@ -247,7 +245,7 @@ public:
             }
         }
 
-        if (!flagDoctor){
+        if (foundDoctor==nullptr){
             cout << "Doctor not found." << endl;
         }
 
