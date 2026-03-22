@@ -1,0 +1,106 @@
+# =========================
+
+# 🔧 Build & Output Folders
+
+# =========================
+
+bin/
+obj/
+build/
+cmake-build-*/
+
+# =========================
+
+# ⚙️ Compiled Files
+
+# =========================
+
+*.exe
+*.out
+*.o
+*.obj
+*.so
+*.dll
+*.a
+*.lib
+
+# =========================
+
+# 🧠 Debug / Temp Files
+
+# =========================
+
+*.log
+*.tmp
+*.cache
+*.d
+
+# =========================
+
+# 🧪 CMake
+
+# =========================
+
+CMakeFiles/
+CMakeCache.txt
+cmake_install.cmake
+Makefile
+
+# =========================
+
+# 🧰 IDE & Editor Files
+
+# =========================
+
+# VS Code
+
+.vscode/
+
+# Visual Studio
+
+.vs/
+*.vcxproj*
+*.sln
+
+# Code::Blocks
+
+*.layout
+*.depend
+*.cbp
+
+# =========================
+
+# 🖥️ OS Junk
+
+# =========================
+
+.DS_Store
+Thumbs.db
+
+# =========================
+
+# 📦 Archives (optional)
+
+# =========================
+
+*.zip
+*.rar
+*.7z
+
+# =========================
+
+# 📄 Documents (optional)
+
+# =========================
+
+*.pdf
+
+# =========================
+
+# 🔒 Personal / Secrets
+
+# =========================
+
+.env
+*.key
+*.pem
