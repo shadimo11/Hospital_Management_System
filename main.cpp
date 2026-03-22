@@ -256,7 +256,15 @@ public:
 
         cout << "Emergency added for patient " << patientId << "." << endl;
     }
-    int handleEmergency();
+    int handleEmergency(){
+        if (!emergencyQueue.empty()){
+            int P_Id = emergencyQueue.front();
+            cout << "Handling emergency for patient " << P_Id << endl;
+            return P_Id;
+        }
+        cout << "No emergency cases." << endl;
+        return -1;
+    }
 
     void bookAppointment(int doctorId, int patientId){
 
@@ -290,7 +298,22 @@ public:
 
 
     }
-    void displayPatientInfo(int patientId);
+    void displayPatientInfo(int patientId){
+        for(int i = 0; i< patients.size(); i++){
+            if(patients[i].getId() == patientId){
+                cout << "=== Patient Information ===" << endl << "ID: " << patients[i].getId() << endl << "Name: " << patients[i].getName() << endl << "Age: " << patients[i].getage() << endl;
+                cout << "Contact: " << patients[i].getcontact() << endl << "Admission Status: " << patients[i].getAdmissionStatus() << endl;
+                if (patients[i].getAdmissionStatus()){
+                        cout << patients[i].getroomtype() << endl;
+                }
+                cout << "===========================" << endl;
+                return;
+            }
+        }
+        cout << "Patient not found." << endl;
+        return;
+    }
+
 
     void displayDoctorInfo(int doctorId)
     {
