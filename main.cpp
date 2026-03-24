@@ -259,6 +259,7 @@ public:
     int handleEmergency(){
         if (!emergencyQueue.empty()){
             int P_Id = emergencyQueue.front();
+            emergencyQueue.pop();
             cout << "Handling emergency for patient " << P_Id << endl;
             return P_Id;
         }
@@ -301,10 +302,11 @@ public:
     void displayPatientInfo(int patientId){
         for(int i = 0; i< patients.size(); i++){
             if(patients[i].getId() == patientId){
-                cout << "=== Patient Information ===" << endl << "ID: " << patients[i].getId() << endl << "Name: " << patients[i].getName() << endl << "Age: " << patients[i].getage() << endl;
-                cout << "Contact: " << patients[i].getcontact() << endl << "Admission Status: " << patients[i].getAdmissionStatus() << endl;
+                cout << ">>> Patient Information <<<" << endl << "ID: " << patients[i].getId() << endl << "Name: " << patients[i].getName() << endl << "Age: " << patients[i].getage() << endl;
+                cout << "Contact: " << patients[i].getcontact() << endl;
+                cout << "Admission Status: " << (patients[i].getAdmissionStatus() ? "Admitted" : "Not Admitted") << endl;
                 if (patients[i].getAdmissionStatus()){
-                        cout << patients[i].getroomtype() << endl;
+                        cout << "Room Type: " << roomTypeName(patients[i].getroomtype()) << endl;
                 }
                 cout << "===========================" << endl;
                 return;
