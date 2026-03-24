@@ -72,20 +72,20 @@ public:
 
     void admitPatient(RoomType type){
         if(isAdmitted==true){
-            cout<<"Patient "<<name<<" is already admitted.";
+            cout<<"Patient "<<name<<" is already admitted."<<endl;
         }else{
         isAdmitted=true;
         roomType=type;
-        cout<<"Patient "<<name<<" admitted to"<<roomTypeName(type)<<".";
+        cout<<"Patient "<<name<<" admitted to"<<roomTypeName(type)<<"."<<endl;
         }
 
     };
     void dischargePatient(){
         if(isAdmitted==false){
-            cout<<"Patient "<<name<<" is not currently admitted.";
+            cout<<"Patient "<<name<<" is not currently admitted."<<endl;
         }else{
             isAdmitted=false;
-        cout<<"Patient "<<name<<" has been discharged.";
+        cout<<"Patient "<<name<<" has been discharged."<<endl;
         }
 
     };
@@ -172,10 +172,10 @@ public:
     }
     int seePatient(){
        if(appointmentQueue.empty()){
-        cout<<"No appointments for Dr."<<name<<".";
+        cout<<"No appointments for Dr."<<name<<"."<<endl;
         return -1;
        }else{
-       cout<<"Dr. "<<name<<" is seeing patient "<<appointmentQueue.front();
+       cout<<"Dr. "<<name<<" is seeing patient "<<appointmentQueue.front()<<endl;
        int i=appointmentQueue.front();
        appointmentQueue.pop();
        return i;
@@ -244,7 +244,7 @@ public:
         }
        }
        if(flag==false){
-        cout<<"Patient not found.";
+        cout<<"Patient not found."<<endl;
        }
 
 
