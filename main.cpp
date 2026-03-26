@@ -42,7 +42,7 @@ string departmentName(Department dept)
         case NEUROLOGY:     return "Neurology";
         case ORTHOPEDICS:   return "Orthopedics";
         case PEDIATRICS:    return "Pediatrics";
-        case EMERGENCY:     return "Emergecny";
+        case EMERGENCY:     return "Emergency";
         case GENERAL:       return "General Practice";
         default:            return "Unknown";
     }
@@ -136,7 +136,7 @@ public:
     }
     void displayHistory(){
         if (medicalHistory.empty()){
-            cout << " No medical history.";
+            cout << " No medical history." << endl;
         }
         else{
             stack<string> temp = medicalHistory;
@@ -168,7 +168,7 @@ public:
     void addAppointment(int patientId)
     {
         appointmentQueue.push(patientId);
-        cout << "Appointmet added for patient: " << name << ", ID: " << patientId << endl;
+        cout << "Appointment added for patient: " << name << ", ID: " << patientId << endl;
     }
     int seePatient(){
        if(appointmentQueue.empty()){
@@ -334,6 +334,26 @@ public:
         }
         cout << "Doctor not found." << endl;
     }
+
+    Patient* getPatientById(int patientId) {
+        for (auto& patient : patients) {
+            if (patient.getId() == patientId) {
+                return &patient;
+            }
+        }
+        cout << "Patient not found." << endl;
+        return nullptr;
+    }
+
+     Doctor* getDoctorById(int doctorId) {
+        for (auto& doctor : doctors) {
+            if (doctor.getId() == doctorId) {
+                return &patient;
+            }
+        }
+        cout << "Doctor not found." << endl;
+        return nullptr;
+    }
 };
 
 // ========== MAIN PROGRAM ========== //
@@ -367,6 +387,11 @@ int main() {
     // Test Case 5: Handling medical tests
     // These would normally be called on Patient objects
     // In a real implementation, we'd need a way to access patients
+    Patient *pant1= hospital.getPatientById(p1); 
+    pant1->addMedicalRecord("Diagnosed with hypertension");
+    pant1->requestTest("Blood Test");
+    pant1->performTest();
+    
 
     // Test Case 6: Emergency cases
     hospital.addEmergency(p3);
@@ -377,6 +402,8 @@ int main() {
 
     // Test Case 7: Discharging patients
     // Would normally call dischargePatient() on Patient objects
+    pant1->dischargePatient();
+    
 
     // Test Case 8: Displaying information
     hospital.displayPatientInfo(p1);
@@ -390,12 +417,17 @@ int main() {
     // Test Case 9: Doctor seeing patients
     // These would normally be called on Doctor objects
     // In a real implementation, we'd need a way to access doctors
+    Doctor *doc1=hospital.getDoctorById(d1);
+    doc1->addAppointment(p1);
+
 
     // Test Case 10: Edge cases
     Hospital emptyHospital;
     emptyHospital.displayPatientInfo(1); // No patients
     emptyHospital.displayDoctorInfo(1);  // No doctors
     emptyHospital.handleEmergency();     // No emergencies
+
+    
 
     return 0;
 }
