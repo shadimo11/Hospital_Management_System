@@ -275,12 +275,14 @@ public:
         for (auto& i: doctors) {
       	    if (i.getId()==doctorId){
                 foundDoctor = &i;
+                break;
             }
         }
 
         for (auto j: patients) {
       	    if (j.getId()==patientId){
                 flagPatient=true;
+                break;
             }
         }
 
