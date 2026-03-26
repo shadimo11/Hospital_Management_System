@@ -348,7 +348,7 @@ public:
      Doctor* getDoctorById(int doctorId) {
         for (auto& doctor : doctors) {
             if (doctor.getId() == doctorId) {
-                return &patient;
+                return &doctor;
             }
         }
         cout << "Doctor not found." << endl;
