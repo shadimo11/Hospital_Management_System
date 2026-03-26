@@ -30,7 +30,7 @@ string roomTypeName(RoomType type)
         case ICU:           return "ICU";
         case PRIVATE_ROOM:  return "Private Room";
         case SEMI_PRIVATE:  return "Semi-Private Room";
-        default:            return "Unkown";
+        default:            return "Unknown";
     }
 }
 
@@ -72,11 +72,11 @@ public:
 
     void admitPatient(RoomType type){
         if(isAdmitted==true){
-            cout<<"Patient "<<name<<" is already admitted."<<endl;
+            cout << "Patient "<< name << " is already admitted." <<endl;
         }else{
         isAdmitted=true;
         roomType=type;
-        cout<<"Patient "<<name<<" admitted to"<<roomTypeName(type)<<"."<<endl;
+        cout << "Patient " << name << " admitted to " << roomTypeName(type) << "." << endl;
         }
 
     };
@@ -117,7 +117,7 @@ public:
 
     void addMedicalRecord(string record){
         medicalHistory.push(record);
-        cout << "Medical record added for " << name << " : " << record << endl;
+        cout << "Medical record added for " << name << ": " << record << endl;
     }
 
     void requestTest(string testName){
@@ -131,16 +131,16 @@ public:
             cout << "Performing test for " << name << ": " << test << endl;
             return test;
         }
-        cout << "No pending tests for " << name << endl;
+        cout << "No pending tests for " << name << "." << endl;
         return "";
     }
     void displayHistory(){
+        cout << "Medical History for " << name << ":" << endl;
         if (medicalHistory.empty()){
-            cout << " No medical history." << endl;
+            cout << "  No medical history." << endl;
         }
         else{
             stack<string> temp = medicalHistory;
-            cout << "Medical History for " << name << ":" << endl;
             while (!temp.empty()) {
                 cout << " - " << temp.top() << endl;
                 temp.pop();
@@ -168,15 +168,15 @@ public:
     void addAppointment(int patientId)
     {
         appointmentQueue.push(patientId);
-        cout << "Appointment added for patient: " << name << ", ID: " << patientId << endl;
+        cout << "Appointment added for patient " << patientId << " with " << name << endl;
     }
     int seePatient(){
        if(appointmentQueue.empty()){
-        cout<<"No appointments for Dr."<<name<<"."<<endl;
+        cout << "No appointments for Dr. " << name << "." << endl;
         return -1;
        }else{
-       cout<<"Dr. "<<name<<" is seeing patient "<<appointmentQueue.front()<<endl;
-       int i=appointmentQueue.front();
+       cout << "Dr. " << name << " is seeing patient " << appointmentQueue.front() << endl;
+       int i = appointmentQueue.front();
        appointmentQueue.pop();
        return i;
        }
@@ -223,7 +223,7 @@ public:
         Patient p(patientCounter, name, age, contact);
         patients.push_back(p);
 
-        cout << "Patient registered: " << name << ", ID: " << patientCounter << endl;
+        cout << "Patient registered: " << name << " (ID: " << patientCounter << ")" << endl;
         return patientCounter++;
     }
     int addDoctor(string name, Department dept)
@@ -231,7 +231,7 @@ public:
         Doctor d(doctorCounter, name, dept);
         doctors.push_back(d);
 
-        cout << "Doctor added: " << name << ", ID: " << doctorCounter << " - " << departmentName(dept) << endl;
+        cout << "Doctor added: " << name << " (ID: " << doctorCounter << ") - " << departmentName(dept) << endl;
         return doctorCounter++;
     }
     void admitPatient(int patientId, RoomType type){
@@ -254,7 +254,7 @@ public:
 
         emergencyQueue.push(patientId);
 
-        cout << "Emergency added for patient " << patientId << "." << endl;
+        cout << "Emergency added for patient " << patientId << endl;
     }
     int handleEmergency(){
         if (!emergencyQueue.empty()){
@@ -302,7 +302,7 @@ public:
     void displayPatientInfo(int patientId){
         for(int i = 0; i< patients.size(); i++){
             if(patients[i].getId() == patientId){
-                cout << ">>> Patient Information <<<" << endl << "ID: " << patients[i].getId() << endl << "Name: " << patients[i].getName() << endl << "Age: " << patients[i].getage() << endl;
+                cout << "=== Patient Information ===" << endl << "ID: " << patients[i].getId() << endl << "Name: " << patients[i].getName() << endl << "Age: " << patients[i].getage() << endl;
                 cout << "Contact: " << patients[i].getcontact() << endl;
                 cout << "Admission Status: " << (patients[i].getAdmissionStatus() ? "Admitted" : "Not Admitted") << endl;
                 if (patients[i].getAdmissionStatus()){
@@ -323,7 +323,7 @@ public:
         {
             if (doctor.getId() == doctorId)
             {
-                cout << ">>> Doctor Information <<<" << endl;
+                cout << "=== Doctor Information ===" << endl;
                 cout << "ID: "                  << doctor.getId()           << endl;
                 cout << "Name: "                << doctor.getName()         << endl;
                 cout << "Department: "          << doctor.getDepartment()   << endl;
